@@ -1,0 +1,23 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'gem_freshness_tasks.gemspec'
+  NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+  - 'spec/**/*.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 4
+
+Layout/LineLength:
+  Max: 110

@@ -1,0 +1,9 @@
+.bundle/
+.byebug_history
+coverage/
+log/*.log
+pkg/
+tmp/
+Gemfile.lock
+dead_letter_tasks-*.gem
+spec/examples.txt
