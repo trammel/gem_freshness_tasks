@@ -4,7 +4,7 @@ require:
 AllCops:
   Exclude:
     - 'bin/*'
-    - 'vendor/*'
+    - 'vendor/**/*'
     - 'spec/rails_helper.rb'
     - 'spec/spec_helper.rb'
     - 'gem_freshness_tasks.gemspec'
