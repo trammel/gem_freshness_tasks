@@ -41,7 +41,9 @@ RSpec.describe GemFreshnessTasks::BundlerClient do
       end
 
       it 'shells out to call bundler for outdated gems' do
-        expect(shell_client).to have_received(:run_command).with('bundle outdated', match(anything))
+        expect(shell_client).to have_received(:run_command).with(
+          'bundle outdated --parseable', match(anything)
+        )
       end
 
       it 'results in a sorted list of 6 gems' do
