@@ -21,22 +21,18 @@ RSpec.describe GemFreshnessTasks::BundlerClient do
       let(:exitstatus) { 1 }
       let(:bundler_output) do
         doc = <<~SAMPLE_OUTPUT
-          Fetching gem metadata from https://rubygems.org/..........
-          Fetching gem metadata from https://rubygems.org/.
-          Resolving dependencies...
-
-          Outdated gems included in the bundle:
-            * rspec-mocks (newest 3.8.1, installed 3.8.0)
-            * docile (newest 1.3.2, installed 1.3.1)
-            * jaro_winkler (newest 1.5.3, installed 1.5.2)
-            * rspec-core (newest 3.8.1, installed 3.8.0)
-            * rspec-expectations (newest 3.8.4, installed 3.8.3)
-            * rspec-support (newest 3.8.2, installed 3.8.0)
+          #{'          '}
+                    rspec-mocks (newest 3.8.1, installed 3.8.0)
+                    docile (newest 1.3.2, installed 1.3.1)
+                    jaro_winkler (newest 1.5.3, installed 1.5.2)
+                    rspec-core (newest 3.8.1, installed 3.8.0)
+                    rspec-expectations (newest 3.8.4, installed 3.8.3)
+                    rspec-support (newest 3.8.2, installed 3.8.0)
         SAMPLE_OUTPUT
         doc.split(/\n/)
       end
       let(:outdated_gems) do
-        bundler_output.grep(/^\s+\*\s+/).map { |gem| gem.match(/^\s+\*\s+([\w\-]+)/).captures.first }.sort
+        bundler_output.grep(/\w+/).map { |gem| gem.match(/^\s*([\w\-]+)/).captures.first }.sort
       end
 
       before do
