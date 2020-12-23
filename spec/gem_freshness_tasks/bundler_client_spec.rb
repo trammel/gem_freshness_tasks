@@ -6,7 +6,7 @@ require 'securerandom'
 RSpec.describe GemFreshnessTasks::BundlerClient do
   let(:output_fh) { instance_double(StringIO, puts: true) }
   let(:shell_client) do
-    instance_double(GemFreshnessTasks::ShellClient, run_command: [exitstatus, bundler_output])
+    instance_double(GemFreshnessTasks::ShellClient, run_command: [exitstatus, bundler_output, ''])
   end
   let(:bundle_path) { SecureRandom.uuid }
 

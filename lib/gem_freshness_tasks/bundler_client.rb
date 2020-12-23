@@ -29,7 +29,7 @@ module GemFreshnessTasks
     def run_commands_or_fail(commands, env)
       output = []
       commands.each do |command|
-        exit_value, command_output = @shell_client.run_command(command, env)
+        exit_value, command_output, _error_output = @shell_client.run_command(command, env)
         output << command_output
         raise("Failed to run bundler: #{output}") unless [0, 1].include?(exit_value)
       end

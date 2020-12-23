@@ -11,15 +11,14 @@ module GemFreshnessTasks
     end
 
     def run_command(command, env = {})
-      Open3.popen2e(environment_restricted(command, env)) do |_stdin, mixed_output, wait_thr|
-        lines = []
-        while (line = mixed_output.gets)
-          lines << line
-          @output_fh.puts line
-        end
-        @output_fh.puts("Exited with: #{wait_thr.value.exitstatus}")
-        [wait_thr.value.exitstatus, lines]
+      stdout, stderr, status = Open3.capture3(environment_restricted(command, env))
+
+      stdout.split(/\n/).each do |line|
+        @output_fh.puts line
       end
+
+      @output_fh.puts("Exited with: #{status.exitstatus}")
+      [status.exitstatus, stdout.split(/\n/), stderr.split(/\n/)]
     end
 
     private
