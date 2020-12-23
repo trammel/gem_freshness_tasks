@@ -8,7 +8,7 @@ module GemFreshnessTasks
   # line, rather than through the library, because it's not really
   # built to used in any other way.
   class BundlerClient
-    OUTDATED_COMMAND = 'bundle outdated'
+    OUTDATED_COMMAND = 'bundle outdated --parseable'
     BUNDLE_PATH_KEY = 'BUNDLE_PATH'
     GEM_HOME_KEY = 'GEM_HOME'
     FAILURE_MESSAGE = 'Failed to run bundler'
